@@ -1,0 +1,3 @@
+codeblocks : https://www.codeblocks.org/docs/main_codeblocks_en.html
+
+gnuplot on sourceforge: https://sourceforge.net/projects/gnuplot/
