@@ -1,7 +1,7 @@
-set title "Sorting Algorithms Performance"
-set xlabel "Input Size (A_size)"
-set ylabel "Time (ms)"
-set grid
+set title "Sorting Algorithms Performance"\
+set xlabel "Input Size (A_size)"\
+set ylabel "Time (ms)"\
+set grid\
 set key outside
 
 set logscale y
