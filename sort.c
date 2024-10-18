@@ -149,62 +149,33 @@ void countSort(long int inputArray[], int N)
     free(outputArray);
 }
 
-int main()
-{
-    long int n = 10000;
-    int it = 0;
+int main(){
+    long int n = 10000; int it = 0;
     double tim1[10], tim2[10], tim3[10], tim4[10], tim5[10], tim6[10];
-
     printf("A_size, Bubble, Insertion, Selection, Merge, Quick, Counting\n");
-    while (it++ < 10)
-    {
+    while (it++ < 10){
         long int a[n], b[n], c[n], d[n], e[n], f[n];
-        for (int i = 0; i < n; i++)
-        {
+        for (int i = 0; i < n; i++){
             long int no = rand() % n + 1;
-            a[i] = no;
-            b[i] = no;
-            c[i] = no;
-            d[i] = no;
-            e[i] = no;
-            f[i] = no;
+            a[i] = no; b[i] = no; c[i] = no; d[i] = no; e[i] = no; f[i] = no;
         }
         clock_t start, end;
-        start = clock();
-        bubbleSort(a, n);
-        end = clock();
-
+        start = clock(); bubbleSort(a, n); end = clock();
         tim1[it] = ((double)(end - start));
-        start = clock();
-        insertionSort(b, n);
-        end = clock();
+        start = clock(); insertionSort(b, n); end = clock();
         tim2[it] = ((double)(end - start));
-        start = clock();
-        selectionSort(c, n);
-        end = clock();
+        start = clock(); selectionSort(c, n); end = clock();
         tim3[it] = ((double)(end - start));
-        start = clock();
-        mergeSort(d, 0, n - 1);
-        end = clock();
+        start = clock(); mergeSort(d, 0, n - 1); end = clock();
         tim4[it] = ((double)(end - start));
-        start = clock();
-        quickSort(e, 0, n - 1);
-        end = clock();
+        start = clock(); quickSort(e, 0, n - 1); end = clock();
         tim5[it] = ((double)(end - start));
-        start = clock();
-        countSort(f, n);
-        end = clock();
+        start = clock(); countSort(f, n); end = clock();
         tim6[it] = ((double)(end - start));
         printf("%li, %li, %li, %li, %li, %li, %li\n",
                n,
-               (long int)tim1[it],
-               (long int)tim2[it],
-               (long int)tim3[it],
-               (long int)tim4[it],
-               (long int)tim5[it],
-               (long int)tim6[it]);
+               (long int)tim1[it], (long int)tim2[it], (long int)tim3[it], (long int)tim4[it], (long int)tim5[it], (long int)tim6[it]);
         n += 10000;
     }
-
     return 0;
 }
