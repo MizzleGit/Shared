@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 
 // Swap utility
 void swap(long int *a, long int *b)
@@ -150,7 +151,7 @@ void countSort(long int inputArray[], int N)
 }
 
 int main(){
-    FILE *fichierOutput = fopen("gnutext.txt", "w");
+    FILE *fichierOutput = fopen("sort.txt", "w");
     if (fichierOutput == NULL) return -1;
     long int n = 10000; int it = 0;
     double tim1[10], tim2[10], tim3[10], tim4[10], tim5[10], tim6[10];
@@ -174,12 +175,15 @@ int main(){
         tim5[it] = ((double)(end - start));
         start = clock(); countSort(f, n); end = clock();
         tim6[it] = ((double)(end - start));
+        printf("%d est fini!\n", n);
         fprintf(fichierOutput, "%li, %li, %li, %li, %li, %li, %li\n",
                n,
                (long int)tim1[it], (long int)tim2[it], (long int)tim3[it], (long int)tim4[it], (long int)tim5[it], (long int)tim6[it]);
         n += 10000;
     }
     fclose(fichierOutput);
-    printf("Done!");
+    printf("GNUPlot s'ouvrira dans 3 seconds");
+    sleep(3);
+    system("gnuplot -p -e \"set title \\\"Performance d\'algorithmes de tri\\\"; set xlabel \'Taille de tableau\'; set ylabel \'Temps en ms\'; set grid; set key outside; set logscale y; set xtics rotate by -90; plot \'sort.txt\' using 1:2 with lines title \'A bulles\', \'sort.txt\' using 1:3 with lines title \'Insertion\', \'sort.txt\' using 1:4 with lines title \'Selection\', \'sort.txt\' using 1:5 with lines title \'Fusion\', \'sort.txt\' using 1:6 with lines title \'Rapide\', \'sort.txt\' using 1:7 with lines title \'Denombrement\'\"");
     return 0;
 }
