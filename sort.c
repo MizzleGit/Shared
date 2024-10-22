@@ -156,7 +156,8 @@ int main(){
     long int n = 10000; int it = 0;
     double tim1[10], tim2[10], tim3[10], tim4[10], tim5[10], tim6[10];
     fprintf(fichierOutput,"A_size, Bubble, Insertion, Selection, Merge, Quick, Counting\n");
-    while (it++ < 5){
+    printf("A_size, Bubble, Insertion, Selection, Merge, Quick, Counting\n");
+    while (it++ < 2){
         long int a[n], b[n], c[n], d[n], e[n], f[n];
         for (int i = 0; i < n; i++){
             long int no = rand() % n + 1;
@@ -175,15 +176,31 @@ int main(){
         tim5[it] = ((double)(end - start));
         start = clock(); countSort(f, n); end = clock();
         tim6[it] = ((double)(end - start));
-        printf("%d est fini!\n", n);
+        // printf("%d est fini!\n", n);
         fprintf(fichierOutput, "%li, %li, %li, %li, %li, %li, %li\n",
+               n,
+               (long int)tim1[it], (long int)tim2[it], (long int)tim3[it], (long int)tim4[it], (long int)tim5[it], (long int)tim6[it]);
+        
+        printf("%li, %li, %li, %li, %li, %li, %li\n",
                n,
                (long int)tim1[it], (long int)tim2[it], (long int)tim3[it], (long int)tim4[it], (long int)tim5[it], (long int)tim6[it]);
         n += 10000;
     }
     fclose(fichierOutput);
-    printf("GNUPlot s'ouvrira dans 3 seconds");
+    int choix;
+    printf("\n\nType de graphe: [1] Pour normale, [2] Pour temps logarithmique, [3] Pour les deux:  ");
+    scanf("%d", &choix);
+    printf("\nAttendez 3 secondes...");
     sleep(3);
-    system("gnuplot -p -e \"set title \\\"Performance d\'algorithmes de tri\\\"; set xlabel \'Taille de tableau\'; set ylabel \'Temps en ms\'; set grid; set key outside; set logscale y; set xtics rotate by -90; plot \'sort.txt\' using 1:2 with lines title \'A bulles\', \'sort.txt\' using 1:3 with lines title \'Insertion\', \'sort.txt\' using 1:4 with lines title \'Selection\', \'sort.txt\' using 1:5 with lines title \'Fusion\', \'sort.txt\' using 1:6 with lines title \'Rapide\', \'sort.txt\' using 1:7 with lines title \'Denombrement\'\"");
+    if (choix == 1){
+        system("gnuplot -p -e \"set title \\\"Performance d\'algorithmes de tri\\\"; set xlabel \'Taille de tableau\'; set ylabel \'Temps en microseconds\'; set grid; set key outside; set xtics rotate by -90; plot \'sort.txt\' using 1:2 with lines title \'A bulles\', \'sort.txt\' using 1:3 with lines title \'Insertion\', \'sort.txt\' using 1:4 with lines title \'Selection\', \'sort.txt\' using 1:5 with lines title \'Fusion\', \'sort.txt\' using 1:6 with lines title \'Rapide\', \'sort.txt\' using 1:7 with lines title \'Denombrement\'\"");
+    }
+    else if (choix == 2){
+        system("gnuplot -p -e \"set title \\\"Performance d\'algorithmes de tri\\\"; set xlabel \'Taille de tableau\'; set ylabel \'Temps en microseconds\'; set grid; set key outside; set logscale y; set xtics rotate by -90; plot \'sort.txt\' using 1:2 with lines title \'A bulles\', \'sort.txt\' using 1:3 with lines title \'Insertion\', \'sort.txt\' using 1:4 with lines title \'Selection\', \'sort.txt\' using 1:5 with lines title \'Fusion\', \'sort.txt\' using 1:6 with lines title \'Rapide\', \'sort.txt\' using 1:7 with lines title \'Denombrement\'\"");
+    }
+    else{
+        system("gnuplot -p -e \"set title \\\"Performance d\'algorithmes de tri\\\"; set xlabel \'Taille de tableau\'; set ylabel \'Temps en microseconds\'; set grid; set key outside; set xtics rotate by -90; plot \'sort.txt\' using 1:2 with lines title \'A bulles\', \'sort.txt\' using 1:3 with lines title \'Insertion\', \'sort.txt\' using 1:4 with lines title \'Selection\', \'sort.txt\' using 1:5 with lines title \'Fusion\', \'sort.txt\' using 1:6 with lines title \'Rapide\', \'sort.txt\' using 1:7 with lines title \'Denombrement\'\"");
+        system("gnuplot -p -e \"set title \\\"Performance d\'algorithmes de tri\\\"; set xlabel \'Taille de tableau\'; set ylabel \'Temps en microseconds\'; set grid; set key outside; set logscale y; set xtics rotate by -90; plot \'sort.txt\' using 1:2 with lines title \'A bulles\', \'sort.txt\' using 1:3 with lines title \'Insertion\', \'sort.txt\' using 1:4 with lines title \'Selection\', \'sort.txt\' using 1:5 with lines title \'Fusion\', \'sort.txt\' using 1:6 with lines title \'Rapide\', \'sort.txt\' using 1:7 with lines title \'Denombrement\'\"");
+    }
     return 0;
 }
