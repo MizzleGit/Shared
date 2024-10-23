@@ -1,4 +1,4 @@
-A_size, Bubble, Insertion, Selection, Merge, Quick, Counting
+Taille, Bubble, Insertion, Selection, Merge, Quick, Counting
 10000, 403143, 80180, 149384, 2041, 1684, 301
 20000, 1627232, 580321, 579857, 5571, 2814, 443
 30000, 3921502, 754860, 1303615, 7112, 4710, 796
@@ -9,3 +9,5 @@ A_size, Bubble, Insertion, Selection, Merge, Quick, Counting
 80000, 29169008, 9356952, 9257077, 16982, 14732, 1967
 90000, 36406466, 11640960, 11589935, 23766, 18641, 2275
 100000, 44112398, 8269380, 14354502, 24480, 20984, 2646
+
+

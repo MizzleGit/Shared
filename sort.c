@@ -155,32 +155,27 @@ int main(){
     if (fichierOutput == NULL) return -1;
     long int n = 10000; int it = 0;
     double tim1[10], tim2[10], tim3[10], tim4[10], tim5[10], tim6[10];
-    fprintf(fichierOutput,"A_size, Bubble, Insertion, Selection, Merge, Quick, Counting\n");
-    printf("A_size, Bubble, Insertion, Selection, Merge, Quick, Counting\n");
-    while (it++ < 2){
+    fprintf(fichierOutput,"Taille de tableau, Bubble, Insertion, Selection, Merge, Quick, Counting\n");
+    printf("Taille de tableau, Bubble, Insertion, Selection, Merge, Quick, Counting\n");
+    while (it++ < 10){
         long int a[n], b[n], c[n], d[n], e[n], f[n];
-        for (int i = 0; i < n; i++){
-            long int no = rand() % n + 1;
-            a[i] = no; b[i] = no; c[i] = no; d[i] = no; e[i] = no; f[i] = no;
-        }
+        for (int i = 0; i < n; i++){ long int no = rand() % n + 1; a[i] = no; b[i] = no; c[i] = no; d[i] = no; e[i] = no; f[i] = no;}
         clock_t start, end;
         start = clock(); bubbleSort(a, n); end = clock();
-        tim1[it] = ((double)(end - start));
+        tim1[it] = ((double)(end - start) / CLOCKS_PER_SEC) * 1000000;
         start = clock(); insertionSort(b, n); end = clock();
-        tim2[it] = ((double)(end - start));
+        tim2[it] = ((double)(end - start) / CLOCKS_PER_SEC) * 1000000;
         start = clock(); selectionSort(c, n); end = clock();
-        tim3[it] = ((double)(end - start));
+        tim3[it] = ((double)(end - start) / CLOCKS_PER_SEC) * 1000000;
         start = clock(); mergeSort(d, 0, n - 1); end = clock();
-        tim4[it] = ((double)(end - start));
+        tim4[it] = ((double)(end - start) / CLOCKS_PER_SEC) * 1000000;
         start = clock(); quickSort(e, 0, n - 1); end = clock();
-        tim5[it] = ((double)(end - start));
+        tim5[it] = ((double)(end - start) / CLOCKS_PER_SEC) * 1000000;
         start = clock(); countSort(f, n); end = clock();
-        tim6[it] = ((double)(end - start));
-        // printf("%d est fini!\n", n);
+        tim6[it] = ((double)(end - start) / CLOCKS_PER_SEC) * 1000000;
         fprintf(fichierOutput, "%li, %li, %li, %li, %li, %li, %li\n",
                n,
                (long int)tim1[it], (long int)tim2[it], (long int)tim3[it], (long int)tim4[it], (long int)tim5[it], (long int)tim6[it]);
-        
         printf("%li, %li, %li, %li, %li, %li, %li\n",
                n,
                (long int)tim1[it], (long int)tim2[it], (long int)tim3[it], (long int)tim4[it], (long int)tim5[it], (long int)tim6[it]);
@@ -204,3 +199,5 @@ int main(){
     }
     return 0;
 }
+
+
